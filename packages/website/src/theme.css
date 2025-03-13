@@ -1,0 +1,59 @@
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Fonts */
+  --font-poppins: Poppins, sans-serif;
+  --font-inter: Inter, sans-serif;
+  --font-default: var(--font-poppins);
+
+  /* Spacings */
+  --spacing-none: 0px;
+  --spacing-xxs: 6px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 64px;
+
+  /* Timings */
+  --ease-ease: ease;
+  --ease-in: ease-in;
+  --ease-out: ease-out;
+  --ease-in-out: ease-in-out;
+  --ease-bezier-out: cubic-bezier(0.25, 0.8, 0.6, 1);
+
+  /* Common Colors */
+  --color-transparent: transparent;
+  --color-black-transparent: rgba(0, 0, 0, 0);
+  --color-white-transparent: rgba(255, 255, 255, 0);
+  --color-center-transparent: rgba(127, 127, 127, 0);
+
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-red: #ff652d;
+  --color-green: #6ec120;
+  --color-blue: #547cff;
+
+  /* Colors */
+  --color-primary: #7ab9f2;
+  --color-on-primary: #242424;
+
+  --color-background: #202020;
+  --color-surface: #242424;
+  --color-elevated: #272727;
+
+  --color-text: #dedede;
+  --color-text-light: #a0a0a0;
+  --color-text-strong: #fafafa;
+  --color-text-highlight: #ffffff;
+
+  --color-link: #6dc2ff;
+  --color-link-hover: #2c80db;
+
+  --color-border: #343434;
+
+  --color-success: #46c637;
+  --color-error: #ff3f69;
+  --color-pending: #ffa632;
+}
