@@ -5,6 +5,14 @@
   "license": "MIT",
   "main": "src/index.ts",
   "types": "src/index.ts",
+  "scripts": {
+    "format:check": "prettier -c \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "yarn lint --fix",
+    "ts:check": "tsc --noEmit",
+    "check:all": "yarn format:check && yarn lint && yarn ts:check"
+  },
   "dependencies": {
     "@noble/ciphers": "^1.2.1",
     "@noble/hashes": "^1.7.1",
@@ -12,6 +20,9 @@
     "pako": "^2.1.0"
   },
   "devDependencies": {
-    "@types/pako": "^2"
+    "@types/pako": "^2",
+    "eslint": "^8.7.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
   }
 }
