@@ -1,0 +1,36 @@
+name: Encryption
+
+on:
+  workflow_dispatch:
+  push:
+    paths: [packages/encryption/**]
+    branches:
+      - main
+  pull_request:
+    paths: [packages/encryption/**]
+
+permissions: read-all
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Format Check
+        run: yarn workspace encryption run format:check
+
+      - name: Type Checking
+        run: yarn workspace encryption run ts:check
+
+      - name: Lint
+        run: yarn workspace encryption run lint
