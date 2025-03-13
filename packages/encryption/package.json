@@ -4,5 +4,14 @@
   "version": "0.0.0",
   "license": "MIT",
   "main": "src/index.ts",
-  "types": "src/index.ts"
+  "types": "src/index.ts",
+  "dependencies": {
+    "@noble/ciphers": "^1.2.1",
+    "@noble/hashes": "^1.7.1",
+    "buffer": "^6.0.3",
+    "pako": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/pako": "^2"
+  }
 }
