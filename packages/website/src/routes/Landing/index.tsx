@@ -79,34 +79,36 @@ export const Landing: React.FC = () => {
     return (
       <div className="flex flex-col flex-1">
         <header className="flex flex-row justify-between items-center px-4 py-2 bg-elevated">
-          <button
-            onClick={onCancelClick}
-            className="flex flex-row items-center justify-center cursor-pointer bg-background rounded-md pl-2 pr-3 py-1.5"
-          >
-            <ChevronLeft className="w-7 h-7" />
+          <div className="flex flex-1 flex-row items-center justify-start">
+            <button
+              onClick={onCancelClick}
+              className="flex flex-row items-center justify-center cursor-pointer bg-error text-text-highlight rounded-md pl-2 pr-3 py-1.5"
+            >
+              <ChevronLeft className="w-6 h-6" />
 
-            <span className="text-xl ml-2">Cancel</span>
-          </button>
+              <span className="text-lg ml-2">Cancel</span>
+            </button>
+          </div>
 
-          <span className="text-xl">{save.name}</span>
+          <span className="text-lg">{save.name}</span>
 
-          <div className="flex flex-row items-center justify-center gap-3">
+          <div className="flex flex-1 flex-row items-center justify-end gap-3">
             <button
               onClick={onCopyClick}
-              className="flex flex-row items-center justify-center cursor-pointer bg-background rounded-md pl-3 pr-3 py-1.5"
+              className="flex flex-row items-center justify-center cursor-pointer bg-primary text-on-primary rounded-md pl-3 pr-3 py-1.5"
             >
-              <Copy className="w-7 h-7" />
+              <Copy className="w-6 h-6" />
 
-              <span className="text-xl ml-2">Copy JSON</span>
+              <span className="text-lg ml-2">Copy JSON</span>
             </button>
 
             <button
               onClick={onSaveClick}
-              className="flex flex-row items-center justify-center cursor-pointer bg-background rounded-md pl-3 pr-3 py-1.5"
+              className="flex flex-row items-center justify-center cursor-pointer bg-primary text-on-primary rounded-md pl-3 pr-3 py-1.5"
             >
-              <Download className="w-7 h-7" />
+              <Download className="w-6 h-6" />
 
-              <span className="text-xl ml-2">Save File</span>
+              <span className="text-lg ml-2">Save File</span>
             </button>
           </div>
         </header>
