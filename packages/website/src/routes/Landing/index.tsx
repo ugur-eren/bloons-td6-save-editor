@@ -1,6 +1,6 @@
 import Editor from '@monaco-editor/react';
 import {editor} from 'monaco-editor';
-import {decrypt, encrypt} from 'encryption';
+import {decrypt, DecryptedFile, encrypt} from 'encryption';
 import {useRef, useState} from 'react';
 
 import {DragAndDrop} from '../../components';
@@ -9,10 +9,13 @@ import {ChevronLeft, Copy, Download} from '../../assets/icons';
 export const Landing: React.FC = () => {
   const editorRef = useRef<editor.IStandaloneCodeEditor>(null);
 
-  const [save, setSave] = useState<{
-    name: string;
-    data: string;
-  } | null>(null);
+  const [save, setSave] = useState<
+    | (DecryptedFile & {
+        name: string;
+        data: string;
+      })
+    | null
+  >(null);
 
   const onEditorMount = (monacoEditor: editor.IStandaloneCodeEditor) => {
     editorRef.current = monacoEditor;
@@ -26,7 +29,7 @@ export const Landing: React.FC = () => {
       const byteArray = await file.bytes();
       const decrypted = await decrypt(byteArray, '11');
 
-      setSave({name: file.name, data: JSON.stringify(decrypted, null, 2)});
+      setSave({name: file.name, data: JSON.stringify(decrypted.content, null, 2), ...decrypted});
     } catch (error) {
       console.error(error);
       // eslint-disable-next-line no-alert
@@ -43,10 +46,8 @@ export const Landing: React.FC = () => {
       return;
     }
 
-    if (editorRef.current) {
-      const value = editorRef.current.getValue();
-      await navigator.clipboard.writeText(value);
-    }
+    const value = editorRef.current.getValue();
+    await navigator.clipboard.writeText(value);
   };
 
   const onSaveClick = async () => {
@@ -56,18 +57,16 @@ export const Landing: React.FC = () => {
       return;
     }
 
-    if (editorRef.current) {
-      const value = editorRef.current.getValue();
-      const encrypted = await encrypt(JSON.parse(value), '11');
+    const value = editorRef.current.getValue();
+    const encrypted = await encrypt(JSON.parse(value), '11');
 
-      const blob = new Blob([encrypted], {type: 'application/octet-stream'});
-      const url = URL.createObjectURL(blob);
+    const blob = new Blob([encrypted], {type: 'application/octet-stream'});
+    const url = URL.createObjectURL(blob);
 
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = save?.name || 'Profile.Save';
-      a.click();
-    }
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = save?.name || 'Profile.Save';
+    a.click();
   };
 
   if (save) {

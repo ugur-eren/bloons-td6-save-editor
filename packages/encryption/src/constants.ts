@@ -1,5 +1,4 @@
-export const HEADER_LENGTH = 44;
-export const PW_LENGTH = 8;
+export const UNIX_EPOCH_START = BigInt('5233041986427387904');
 
 export const PBKDF2_ITERATIONS = 10;
 export const PBKDF2_SALT_LENGTH = 24;
