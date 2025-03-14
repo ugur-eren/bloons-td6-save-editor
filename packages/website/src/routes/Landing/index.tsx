@@ -51,14 +51,20 @@ export const Landing: React.FC = () => {
   };
 
   const onSaveClick = async () => {
-    if (!editorRef.current) {
+    if (!editorRef.current || !save) {
       // eslint-disable-next-line no-alert
       alert('Could not save the file');
       return;
     }
 
     const value = editorRef.current.getValue();
-    const encrypted = await encrypt(JSON.parse(value), '11');
+    const encrypted = await encrypt(
+      {
+        ...save,
+        content: JSON.parse(value),
+      },
+      '11',
+    );
 
     const blob = new Blob([encrypted], {type: 'application/octet-stream'});
     const url = URL.createObjectURL(blob);

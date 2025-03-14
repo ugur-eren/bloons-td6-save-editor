@@ -12,7 +12,7 @@ export function loadFile(file: Uint8Array): ParsedFile {
   const guid = reader.readBE(16);
   const unknown1 = reader.readBE(8);
 
-  reader.readLE(8); // datetime
+  reader.skip(8); // datetime
 
   const pwIdx = reader.readLE(8);
   const salt = reader.readBE(PBKDF2_SALT_LENGTH);

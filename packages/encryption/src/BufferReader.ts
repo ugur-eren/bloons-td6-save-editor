@@ -15,6 +15,10 @@ export class BufferReader {
     this.offset = 0;
   }
 
+  public skip(bytes: number) {
+    this.offset += bytes;
+  }
+
   public readBE(bytes: number) {
     const value = this.buffer.slice(this.offset, this.offset + bytes);
     this.offset += bytes;

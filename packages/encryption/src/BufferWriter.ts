@@ -15,6 +15,15 @@ export class BufferWriter {
     this.offset = offset;
   }
 
+  public skip(bytes: number) {
+    this.offset += bytes;
+
+    if (this.offset > this.buffer.length) {
+      const expand = Buffer.alloc(this.offset - this.buffer.length);
+      this.buffer = Buffer.concat([this.buffer, expand]);
+    }
+  }
+
   public writeBE(bytes: Bytes) {
     const data = arrayify(bytes);
 
