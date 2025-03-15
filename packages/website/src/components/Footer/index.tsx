@@ -5,7 +5,11 @@ export const Footer: React.FC = () => {
 
       <div className="flex flex-col justify-center items-center">
         <span>
-          Released under the{' '}
+          Made with ❤️ by{' '}
+          <a href="https://ugureren.net" target="_blank" rel="noreferrer">
+            Uur Eren
+          </a>
+          . Released under the{' '}
           <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noreferrer">
             MIT License
           </a>
@@ -13,11 +17,10 @@ export const Footer: React.FC = () => {
         </span>
 
         <span>
-          Made with ❤️ by{' '}
+          View source at Github{' '}
           <a href="https://ugureren.net" target="_blank" rel="noreferrer">
-            Uur Eren
+            ugur-eren/bloons-td6-save-editor
           </a>
-          .
         </span>
       </div>
 
