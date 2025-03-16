@@ -18,7 +18,11 @@ export const Footer: React.FC = () => {
 
         <span>
           View source at Github{' '}
-          <a href="https://ugureren.net" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/ugur-eren/bloons-td6-save-editor"
+            target="_blank"
+            rel="noreferrer"
+          >
             ugur-eren/bloons-td6-save-editor
           </a>
         </span>
