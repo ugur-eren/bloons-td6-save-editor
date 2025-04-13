@@ -26,7 +26,8 @@ export const Landing: React.FC = () => {
     if (!file) return;
 
     try {
-      const byteArray = await file.bytes();
+      const arrayBuffer = await file.arrayBuffer();
+      const byteArray = new Uint8Array(arrayBuffer);
       const decrypted = await decrypt(byteArray, '11');
 
       setSave({name: file.name, data: JSON.stringify(decrypted.content, null, 2), ...decrypted});
